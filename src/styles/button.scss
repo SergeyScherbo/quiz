@@ -1,0 +1,35 @@
+.btn {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+
+	font-size: 1rem;
+
+	cursor: pointer;
+
+	&--primary {
+		border: none;
+		background-color: #209cee;
+		color: #fff;
+	}
+
+	&--danger {
+		border: none;
+		background-color: #ff3860;
+		color: #fff;
+	}
+
+	&--success {
+		border: none;
+		background-color: #23d160;
+		color: #fff;
+	}
+}
+
+.btn__group {
+	.btn {
+		&:not(:last-child) {
+			margin-right: 8px;
+		}
+	}
+}
