@@ -23,7 +23,7 @@ const Table = ({ arr }) => {
 						<td>USA</td>
 						<td>Country</td>
 						<td>18.03.2018</td>
-						<td className="btn__group table--160">
+						<td className="btn-group table--160">
 							<button className="btn btn--primary">Begin</button>
 							<button className="btn btn--danger">Delete</button>
 						</td>
@@ -32,7 +32,7 @@ const Table = ({ arr }) => {
 						<td>Math</td>
 						<td>Numbers</td>
 						<td>22.12.2017</td>
-						<td className="btn__group table--160">
+						<td className="btn-group table--160">
 							<button className="btn btn--primary">Begin</button>
 							<button className="btn btn--danger">Delete</button>
 						</td>
@@ -41,7 +41,7 @@ const Table = ({ arr }) => {
 						<td>Programming basics</td>
 						<td>Programming</td>
 						<td>31.03.2018</td>
-						<td className="btn__group table--160">
+						<td className="btn-group table--160">
 							<button className="btn btn--primary">Begin</button>
 							<button className="btn btn--danger">Delete</button>
 						</td>
