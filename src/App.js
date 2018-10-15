@@ -1,22 +1,52 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import Home from './components/home';
-import Create from './components/create';
-import NotFound from './components/notFound';
+import Home from './components/routes/home';
+import Create from './components/routes/create';
+import NotFound from './components/routes/notFound';
+
+import generateDate from './utils/generateDate';
+import generateId from './utils/generateId';
 
 class App extends Component {
   state = {
-    quizArray: [1, 2, 3]
+    quizArray: []
   };
+
+  componentDidMount() {
+    const quizArray = JSON.parse(localStorage.getItem('quizArray'));
+    if (quizArray) {
+      this.setState({
+        quizArray
+      });
+    }
+  }
+
+  handleCreateQuiz = (quiz) => event => {
+    quiz.date = generateDate();
+    quiz.id = generateId(5);
+
+    this.setState(currentState => {
+      const quizArray = currentState.quizArray.concat(quiz);
+      localStorage.setItem('quizArray', JSON.stringify(quizArray));
+      return {
+        quizArray
+      };
+    });
+
+    console.log(this.state.quizArray);
+
+
+    // don't forget to add date to the quiz
+  }
 
   render() {
     return (
-      <div className="app" style={{ height: '100vh', paddingTop: 20, paddingBottom: 20 }}>
+      <div className="app" style={{ minHeight: '100vh', paddingTop: 20, paddingBottom: 20 }}>
         <div className="container">
           <Switch>
-            <Route path="/create" component={Create} />
+            <Route path="/create" render={(props) => <Create onCreateQuiz={this.handleCreateQuiz} {...props} />} />
             <Route path="/not-found" component={NotFound} />
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={(props) => <Home quizArray={this.state.quizArray} {...props} />} />
             <Redirect to="/not-found" />
           </Switch>
         </div>
@@ -26,33 +56,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-const quizes = [
-  {
-    title: 'Math',
-    created: '18.03.2018',
-    id: 'asldjfakjs1923u409wj',
-    questions: [
-      {
-        id: 0,
-        question: 'What\'s 9 + 10?',
-        answers: [
-          { id: 0, text: '18' },
-          { id: 1, text: '21' },
-          { id: 2, text: '19', correct: true }
-        ]
-      },
-      {
-        id: 1,
-        question: 'What\'s 5 * 5?',
-        answers: [
-          { id: 0, text: '3' },
-          { id: 1, text: '25', correct: true },
-          { id: 2, text: '69' }
-        ]
-      }
-    ]
-  }
-]
