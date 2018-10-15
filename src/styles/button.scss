@@ -9,27 +9,35 @@
 
 	&--primary {
 		border: none;
-		background-color: #209cee;
+		background-color: $primary;
 		color: #fff;
 	}
 
 	&--danger {
 		border: none;
-		background-color: #ff3860;
+		background-color: $danger;
 		color: #fff;
 	}
 
 	&--success {
 		border: none;
-		background-color: #23d160;
+		background-color: $success;
 		color: #fff;
 	}
 }
 
-.btn__group {
+.btn-group {
 	.btn {
 		&:not(:last-child) {
 			margin-right: 8px;
 		}
+	}
+
+	&--mtop {
+		margin-top: 25px;
+	}
+
+	&--mbot {
+		margin-bottom: 25px;
 	}
 }
