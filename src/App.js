@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import Home from './components/home';
+import Create from './components/create';
+import NotFound from './components/notFound';
 
 class App extends Component {
   state = {
@@ -11,7 +13,12 @@ class App extends Component {
     return (
       <div className="app" style={{ height: '100vh', paddingTop: 20, paddingBottom: 20 }}>
         <div className="container">
-          <Route exact path="/" component={Home} />
+          <Switch>
+            <Route path="/create" component={Create} />
+            <Route path="/not-found" component={NotFound} />
+            <Route exact path="/" component={Home} />
+            <Redirect to="/not-found" />
+          </Switch>
         </div>
       </div>
     );
