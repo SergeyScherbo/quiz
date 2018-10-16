@@ -20,8 +20,8 @@ class Create extends Component {
 			id,
 			title: '',
 			options: [
-				{ id: id + '-a1', value: '', isCorrect: true },
-				{ id: id + '-a2', value: '' }
+				{ id: id + '-a1', value: '', isChosen: false, isCorrect: true },
+				{ id: id + '-a2', value: '', isChosen: false }
 			]
 		};
 
@@ -88,7 +88,11 @@ class Create extends Component {
 	handleAddOption = id => event => {
 		const curQuestion = { ...this.state.questions.find(question => question.id === id) };
 		const curOptions = curQuestion.options.map(o => ({ ...o }));
-		curOptions.push({ id: `${id}-a${curOptions.length + 1}`, value: '' });
+		curOptions.push({
+			id: `${id}-a${curOptions.length + 1}`,
+			value: '',
+			isChosen: false
+		});
 		curQuestion.options = curOptions;
 
 		this.setState(currentState => {
