@@ -6,6 +6,7 @@
 	font-size: 1rem;
 
 	cursor: pointer;
+	transition: .3s;
 
 	&--primary {
 		border: none;
@@ -23,6 +24,10 @@
 		border: none;
 		background-color: $success;
 		color: #fff;
+	}
+
+	&--disabled {
+		opacity: .5;
 	}
 }
 
