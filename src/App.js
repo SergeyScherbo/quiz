@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Home from './components/routes/home';
 import Create from './components/routes/create';
+import Quiz from './components/routes/quiz';
 import NotFound from './components/routes/notFound';
 
 import generateDate from './utils/generateDate';
@@ -32,11 +33,14 @@ class App extends Component {
         quizArray
       };
     });
+  };
 
-    console.log(this.state.quizArray);
-
-
-    // don't forget to add date to the quiz
+  handleDeleteQuiz = (quiz) => event => {
+    this.setState(currentState => {
+      return {
+        quizArray: currentState.quizArray.filter(item => item.id !== quiz.id)
+      };
+    });
   }
 
   render() {
@@ -46,7 +50,16 @@ class App extends Component {
           <Switch>
             <Route path="/create" render={(props) => <Create onCreateQuiz={this.handleCreateQuiz} {...props} />} />
             <Route path="/not-found" component={NotFound} />
-            <Route exact path="/" render={(props) => <Home quizArray={this.state.quizArray} {...props} />} />
+            <Route path="/quiz-:id" component={Quiz} />
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Home
+                  quizArray={this.state.quizArray}
+                  onDeleteQuiz={this.handleDeleteQuiz}
+                  {...props} />
+              )} />
             <Redirect to="/not-found" />
           </Switch>
         </div>

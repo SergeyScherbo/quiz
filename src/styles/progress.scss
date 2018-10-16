@@ -1,0 +1,26 @@
+.progress {
+	margin-bottom: 35px;
+
+	&__nums {
+		margin-bottom: 10px;
+	}
+
+	&__bar {
+		position: relative;
+		height: 5px;
+		border-radius: 5px;
+		background-color: lighten($main, 70%);
+	}
+
+	&__completed {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 5px;
+		border-radius: 5px;
+		width: 0;
+		background-color: $success;
+
+		transition: 1s;
+	}
+}

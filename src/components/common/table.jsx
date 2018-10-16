@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Table = ({ arr }) => {
-	if (arr.length === 0) {
+const Table = ({ quizArray, onBeginQuiz, onDeleteQuiz }) => {
+	if (quizArray.length === 0) {
 		return <p className="text">You don't have any quiz yet...</p>
 	} else {
 		return (
@@ -16,14 +17,22 @@ const Table = ({ arr }) => {
 				</thead>
 				<tbody>
 					{
-						arr.map(el => (
-							<tr key={el.id}>
-								<td>{el.quizName}</td>
-								<td>{el.quizTheme}</td>
-								<td>{el.date}</td>
+						quizArray.map(quiz => (
+							<tr key={quiz.id}>
+								<td>{quiz.quizName}</td>
+								<td>{quiz.quizTheme}</td>
+								<td>{quiz.date}</td>
 								<td className="btn-group table--160">
-									<button className="btn btn--primary">Begin</button>
-									<button className="btn btn--danger">Delete</button>
+									<Link
+										className="btn btn--primary"
+										to={{
+											pathname: '/quiz-' + quiz.id,
+											state: { quiz }
+										}}
+									>
+										Begin
+									</Link>
+									<button className="btn btn--danger" onClick={onDeleteQuiz(quiz)}>Delete</button>
 								</td>
 							</tr>
 						))
