@@ -1,0 +1,37 @@
+.question {
+	.heading {
+		margin-bottom: 15px;
+	}
+
+	&__option {
+		
+		&-wrp {
+			display: inline-block;
+			cursor: pointer;
+
+			.radio,
+			.text {
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			.radio {
+				margin-right: 10px;
+			}
+
+			.text {
+				transition: .3s;
+			}
+
+			&:hover {
+				.text {
+					color: lighten($main, 50%);
+				}
+			}
+		}
+
+		&:not(:last-of-type) {
+			margin-bottom: 10px;
+		}
+	}
+}
