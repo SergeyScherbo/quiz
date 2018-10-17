@@ -11,7 +11,7 @@ const Result = ({ progress }) => {
 	} else if (percentage > 50 && percentage < 90) {
 		message = `Very good, ${percentage}% of your answers are correct!`;
 	} else {
-		message = `Awesome, you have result with ${percentage}% correct answers!`;
+		message = `Awesome, ${percentage}% of your answers are correct!`;
 	}
 
 	return (

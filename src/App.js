@@ -7,6 +7,7 @@ import NotFound from './components/routes/notFound';
 
 import generateDate from './utils/generateDate';
 import generateId from './utils/generateId';
+import { setLocal, getLocal } from './utils/local';
 
 class App extends Component {
   state = {
@@ -14,7 +15,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const quizArray = JSON.parse(localStorage.getItem('quizArray'));
+    const quizArray = getLocal('quizArray');
     if (quizArray) {
       this.setState({
         quizArray
@@ -26,9 +27,11 @@ class App extends Component {
     quiz.date = generateDate();
     quiz.id = generateId(5);
 
+    console.log(quiz);
+
     this.setState(currentState => {
       const quizArray = currentState.quizArray.concat(quiz);
-      localStorage.setItem('quizArray', JSON.stringify(quizArray));
+      setLocal('quizArray', quizArray);
       return {
         quizArray
       };
@@ -37,8 +40,10 @@ class App extends Component {
 
   handleDeleteQuiz = (quiz) => event => {
     this.setState(currentState => {
+      const quizArray = currentState.quizArray.filter(item => item.id !== quiz.id);
+      setLocal('quizArray', quizArray);
       return {
-        quizArray: currentState.quizArray.filter(item => item.id !== quiz.id)
+        quizArray
       };
     });
   }
