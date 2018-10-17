@@ -9,21 +9,15 @@
 	transition: .3s;
 
 	&--primary {
-		border: none;
-		background-color: $primary;
-		color: #fff;
+		@include button($primary);
 	}
 
 	&--danger {
-		border: none;
-		background-color: $danger;
-		color: #fff;
+		@include button($danger);
 	}
 
 	&--success {
-		border: none;
-		background-color: $success;
-		color: #fff;
+		@include button($success);
 	}
 
 	&--disabled {
