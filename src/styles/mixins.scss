@@ -1,0 +1,13 @@
+@mixin button($color) {
+	border: none;
+	color: #fff;
+	background-color: $color;
+
+	&:hover {
+		background-color: darken($color, 10%);
+	}
+
+	&:active {
+		box-shadow: 0 0 0 2px fade-out($color, .5);
+	}
+}
