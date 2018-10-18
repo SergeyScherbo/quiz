@@ -1,5 +1,8 @@
 ## Basic quiz generator
 
+### Demo
+quiz.sergeyscherbo.com
+
 ### Current functional
 - Ability to create quiz
 - Ability to delete quiz
