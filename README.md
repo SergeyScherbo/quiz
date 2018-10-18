@@ -1,7 +1,7 @@
 ## Basic quiz generator
 
 ### Demo
-quiz.sergeyscherbo.com
+[quiz.sergeyscherbo.com](http://quiz.sergeyscherbo.com)
 
 ### Current functional
 - Ability to create quiz
