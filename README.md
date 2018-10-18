@@ -3,7 +3,7 @@
 ### Demo
 [quiz.sergeyscherbo.com](http://quiz.sergeyscherbo.com)
 
-### Current functional
+### Current functionality
 - Ability to create quiz
 - Ability to delete quiz
 - Ability to create as many questions as you want (each quiz requires at least 2 questions)
