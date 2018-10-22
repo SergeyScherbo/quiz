@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const CreateBtnGroup = ({ quiz, onAddQuestion, onCreateQuiz, questionsLength }) => {
+const CreateBtnGroup = ({ onAddQuestion, onCreateQuiz, questionsLength }) => {
 	return (
 		<div className="btn-group">
 			<button className="btn btn--primary" onClick={onAddQuestion}>Add question</button>
 			{
 				questionsLength > 1
-					? <Link to="/" className="btn btn--success" onClick={onCreateQuiz(quiz)}>Create quiz</Link>
+					? <button className="btn btn--success" onClick={onCreateQuiz}>Create quiz</button>
 					: null
 			}
 		</div>
