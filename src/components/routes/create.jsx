@@ -132,6 +132,18 @@ class Create extends Component {
 		});
 	}
 
+	handleValidate = (event) => {
+		// validate quiz
+
+		const test = true;
+		if (test) this.createQuiz();
+	}
+
+	createQuiz() {
+		this.props.onCreateQuiz(this.state);
+		this.props.history.push('/');
+	}
+
 	render() {
 		const { questions } = this.state;
 		return (
@@ -157,7 +169,7 @@ class Create extends Component {
 				<CreateBtnGroup
 					quiz={this.state}
 					onAddQuestion={this.handleAddQuestion}
-					onCreateQuiz={this.props.onCreateQuiz}
+					onCreateQuiz={this.handleValidate}
 					questionsLength={questions.length}
 				/>
 			</React.Fragment>
