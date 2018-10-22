@@ -23,11 +23,9 @@ class App extends Component {
     }
   }
 
-  handleCreateQuiz = (quiz) => event => {
+  handleCreateQuiz = (quiz) => {
     quiz.date = generateDate();
     quiz.id = generateId(5);
-
-    console.log(quiz);
 
     this.setState(currentState => {
       const quizArray = currentState.quizArray.concat(quiz);
