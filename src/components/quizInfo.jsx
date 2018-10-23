@@ -1,13 +1,14 @@
 import React from 'react';
 
-const QuizInfo = ({ name, theme, onChangeName, onChangeTheme }) => {
+const QuizInfo = ({ name, theme, onChange }) => {
 	return (
 		<div className="info">
 			<div className="info__el">
 				<label className="label">Quiz name</label>
 				<textarea
 					className="field field--big"
-					onChange={onChangeName}
+					name="quizName"
+					onChange={onChange}
 					value={name}
 					placeholder="Name">
 				</textarea>
@@ -16,7 +17,8 @@ const QuizInfo = ({ name, theme, onChangeName, onChangeTheme }) => {
 				<label className="label">Quiz theme</label>
 				<textarea
 					className="field field--big"
-					onChange={onChangeTheme}
+					name="quizTheme"
+					onChange={onChange}
 					value={theme}
 					placeholder="Theme">
 				</textarea>
