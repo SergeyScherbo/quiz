@@ -32,6 +32,14 @@ class Create extends Component {
 		});
 	}
 
+	handleRemoveQuestion = (id) => event => {
+		this.setState(currentState => {
+			return {
+				questions: currentState.questions.filter(question => question.id !== id)
+			};
+		});
+	}
+
 	handleChangeQuestion = question => event => {
 		const value = event.target.value;
 		this.setState(currentState => {
@@ -186,6 +194,7 @@ class Create extends Component {
 					onPickAnswer={this.handlePickAnswer}
 					onAddOption={this.handleAddOption}
 					onRemoveOption={this.handleRemoveOption}
+					onRemoveQuestion={this.handleRemoveQuestion}
 				/>
 				<CreateBtnGroup
 					disabled={this.validate()}

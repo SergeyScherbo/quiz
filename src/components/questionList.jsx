@@ -8,7 +8,8 @@ const QuestionList = (props) => {
 		onChangeOption,
 		onPickAnswer,
 		onAddOption,
-		onRemoveOption
+		onRemoveOption,
+		onRemoveQuestion
 	} = props;
 
 	if (questions.length === 0) {
@@ -47,6 +48,7 @@ const QuestionList = (props) => {
 								? <button className="btn btn--danger" onClick={onRemoveOption(question.id)}>Remove option</button>
 								: null
 						}
+						<button className="btn btn--danger" onClick={onRemoveQuestion(question.id)}>Remove</button>
 					</div>
 				</li>
 			))}
