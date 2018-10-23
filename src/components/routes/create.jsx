@@ -32,6 +32,14 @@ class Create extends Component {
 		});
 	}
 
+	handleRemoveQuestion = (id) => event => {
+		this.setState(currentState => {
+			return {
+				questions: currentState.questions.filter(question => question.id !== id)
+			};
+		});
+	}
+
 	handleChangeQuestion = question => event => {
 		const value = event.target.value;
 		this.setState(currentState => {
@@ -132,16 +140,37 @@ class Create extends Component {
 		});
 	}
 
-	handleValidate = (event) => {
-		// validate quiz
-
-		const test = true;
-		if (test) this.createQuiz();
-	}
-
-	createQuiz() {
+	handleCreate = (event) => {
 		this.props.onCreateQuiz(this.state);
 		this.props.history.push('/');
+	}
+
+	validate() {
+		const quiz = this.state;
+
+		if (quiz.quizName.length === 0 || quiz.quizTheme.length === 0) {
+			return true;
+		}
+
+		return this.findEmptyFields();
+	}
+
+	findEmptyFields() {
+		const questions = this.state.questions;
+		for (let i = 0; i < questions.length; i++) {
+			if (questions[i].title.length === 0) {
+				return true;
+			}
+
+			const options = questions[i].options;
+			for (let j = 0; j < options.length; j++) {
+				if (options[j].value.length === 0) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	render() {
@@ -150,7 +179,7 @@ class Create extends Component {
 			<React.Fragment>
 				<PageStart
 					heading="Create quiz"
-					text='This is the quiz generator. To add new question - click "Add question" button. Be aware, that quiz must contain at least two questions!'
+					text='This is the quiz generator. To add new question - click "Add question" button. Be aware, that quiz must contain at least two questions and every filed should be filled!'
 				/>
 				<QuizInfo
 					name={this.state.quizName}
@@ -165,11 +194,12 @@ class Create extends Component {
 					onPickAnswer={this.handlePickAnswer}
 					onAddOption={this.handleAddOption}
 					onRemoveOption={this.handleRemoveOption}
+					onRemoveQuestion={this.handleRemoveQuestion}
 				/>
 				<CreateBtnGroup
-					quiz={this.state}
+					disabled={this.validate()}
 					onAddQuestion={this.handleAddQuestion}
-					onCreateQuiz={this.handleValidate}
+					onCreateQuiz={this.handleCreate}
 					questionsLength={questions.length}
 				/>
 			</React.Fragment>
