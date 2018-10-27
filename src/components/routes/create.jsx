@@ -128,15 +128,9 @@ class Create extends Component {
 		});
 	}
 
-	handleChangeName = (event) => {
+	handleChange = (event) => {
 		this.setState({
-			quizName: event.target.value
-		});
-	}
-
-	handleChangeTheme = (event) => {
-		this.setState({
-			quizTheme: event.target.value
+			[event.target.name]: event.target.value
 		});
 	}
 
@@ -184,8 +178,7 @@ class Create extends Component {
 				<QuizInfo
 					name={this.state.quizName}
 					theme={this.state.quizTheme}
-					onChangeName={this.handleChangeName}
-					onChangeTheme={this.handleChangeTheme}
+					onChange={this.handleChange}
 				/>
 				<QuestionList
 					questions={questions}
