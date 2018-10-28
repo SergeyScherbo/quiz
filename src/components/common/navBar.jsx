@@ -15,7 +15,7 @@ const NavBar = ({ logged }) => {
 						: (
 							<React.Fragment>
 								<li className="navigation__el"><NavLink className="navigation__link" to="/profile">Profile</NavLink></li>
-								<li className="navigation__el"><a className="navigation__link" href="">Logout</a></li>
+								<li className="navigation__el"><a className="navigation__link" href="/">Logout</a></li>
 							</React.Fragment>
 						)
 					}
