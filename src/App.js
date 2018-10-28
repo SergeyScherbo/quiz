@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar logged={this.state.logged} />
-        <div className="container">
+        <div className="container content">
           <Switch>
             <Route path="/quiz-:id" component={Quiz} />
             <Route path="/login" component={Login} />
@@ -77,6 +77,7 @@ class App extends Component {
             <Redirect to="/not-found" />
           </Switch>
         </div>
+        <div className="footer">Sergey Scherbo 2018</div>
       </React.Fragment>
     );
   }
